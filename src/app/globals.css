@@ -5,6 +5,129 @@
   --foreground: #171717;
 }
 
+@theme {
+  /* Sprintra Brand Colors - Electric Blue + Neon Orange */
+  --color-sprintra-blue-50: oklch(97% 0.02 255);
+  --color-sprintra-blue-100: oklch(93% 0.04 255);
+  --color-sprintra-blue-200: oklch(87% 0.08 255);
+  --color-sprintra-blue-300: oklch(78% 0.12 255);
+  --color-sprintra-blue-400: oklch(68% 0.16 255);
+  --color-sprintra-blue-500: oklch(58% 0.2 255);
+  --color-sprintra-blue-600: oklch(48% 0.24 255);
+  --color-sprintra-blue-700: oklch(38% 0.2 255);
+  --color-sprintra-blue-800: oklch(28% 0.16 255);
+  --color-sprintra-blue-900: oklch(18% 0.12 255);
+  --color-sprintra-blue-950: oklch(12% 0.08 255);
+
+  --color-sprintra-orange-50: oklch(97% 0.02 45);
+  --color-sprintra-orange-100: oklch(93% 0.04 45);
+  --color-sprintra-orange-200: oklch(87% 0.08 45);
+  --color-sprintra-orange-300: oklch(78% 0.12 45);
+  --color-sprintra-orange-400: oklch(68% 0.16 45);
+  --color-sprintra-orange-500: oklch(58% 0.2 45);
+  --color-sprintra-orange-600: oklch(48% 0.24 45);
+  --color-sprintra-orange-700: oklch(38% 0.2 45);
+  --color-sprintra-orange-800: oklch(28% 0.16 45);
+  --color-sprintra-orange-900: oklch(18% 0.12 45);
+  --color-sprintra-orange-950: oklch(12% 0.08 45);
+
+  /* Extended Electric Blue Variants */
+  --color-electric-blue: oklch(58% 0.2 255);
+  --color-electric-blue-bright: oklch(68% 0.24 255);
+  --color-electric-blue-dark: oklch(38% 0.18 255);
+
+  /* Extended Neon Orange Variants */
+  --color-neon-orange: oklch(68% 0.2 45);
+  --color-neon-orange-bright: oklch(78% 0.24 45);
+  --color-neon-orange-dark: oklch(48% 0.18 45);
+
+  /* Semantic Colors */
+  --color-primary: var(--color-sprintra-blue-600);
+  --color-primary-hover: var(--color-sprintra-blue-700);
+  --color-secondary: var(--color-sprintra-orange-500);
+  --color-secondary-hover: var(--color-sprintra-orange-600);
+  --color-accent: var(--color-neon-orange);
+  --color-accent-bright: var(--color-neon-orange-bright);
+
+  /* Surface Colors for Dark Theme */
+  --color-surface-dark: oklch(15% 0.02 255);
+  --color-surface-darker: oklch(10% 0.02 255);
+  --color-surface-darkest: oklch(8% 0.02 255);
+
+  /* Enhanced Gradients */
+  --gradient-primary: linear-gradient(
+    135deg,
+    var(--color-electric-blue) 0%,
+    var(--color-sprintra-blue-600) 100%
+  );
+  --gradient-secondary: linear-gradient(
+    135deg,
+    var(--color-neon-orange) 0%,
+    var(--color-sprintra-orange-600) 100%
+  );
+  --gradient-hero: linear-gradient(
+    135deg,
+    var(--color-electric-blue) 0%,
+    var(--color-neon-orange) 100%
+  );
+  --gradient-accent: linear-gradient(
+    135deg,
+    var(--color-sprintra-blue-500) 0%,
+    var(--color-sprintra-orange-500) 50%,
+    var(--color-sprintra-blue-600) 100%
+  );
+
+  /* Shadows with Brand Colors */
+  --shadow-blue-glow: 0 8px 32px oklch(58% 0.2 255 / 0.3);
+  --shadow-orange-glow: 0 8px 32px oklch(68% 0.2 45 / 0.3);
+  --shadow-brand-glow:
+    0 12px 40px oklch(58% 0.2 255 / 0.2), 0 4px 16px oklch(68% 0.2 45 / 0.2);
+
+  /* Animation Durations */
+  --duration-fast: 150ms;
+  --duration-normal: 300ms;
+  --duration-slow: 500ms;
+
+  /* Custom Animations */
+  --animate-glow-blue: glow-blue 2s ease-in-out infinite alternate;
+  --animate-glow-orange: glow-orange 2s ease-in-out infinite alternate;
+  --animate-pulse-brand: pulse-brand 3s ease-in-out infinite;
+
+  @keyframes glow-blue {
+    from {
+      box-shadow: 0 0 20px oklch(58% 0.2 255 / 0.4);
+    }
+    to {
+      box-shadow:
+        0 0 30px oklch(58% 0.2 255 / 0.6),
+        0 0 40px oklch(58% 0.2 255 / 0.3);
+    }
+  }
+
+  @keyframes glow-orange {
+    from {
+      box-shadow: 0 0 20px oklch(68% 0.2 45 / 0.4);
+    }
+    to {
+      box-shadow:
+        0 0 30px oklch(68% 0.2 45 / 0.6),
+        0 0 40px oklch(68% 0.2 45 / 0.3);
+    }
+  }
+
+  @keyframes pulse-brand {
+    0%,
+    100% {
+      transform: scale(1);
+      opacity: 1;
+    }
+    50% {
+      transform: scale(1.05);
+      opacity: 0.8;
+    }
+  }
+}
+
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
