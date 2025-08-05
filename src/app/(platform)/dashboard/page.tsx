@@ -1,6 +1,9 @@
 "use client";
 
 import { useState } from "react";
+import Button from "@/components/ui/Button";
+
+import Ticket from "@/components/Ticket";
 
 export default function Dashboard() {
   const [activeProject, setActiveProject] = useState("travel-app");
@@ -51,9 +54,9 @@ export default function Dashboard() {
                 />
               </svg>
             </div>
-            <button className="from-sprintra-blue-600 to-sprintra-blue-700 hover:from-sprintra-blue-700 hover:to-sprintra-blue-800 rounded-lg bg-gradient-to-r px-4 py-2 text-sm font-medium text-white transition-all">
+            <Button variant="primary" gradient="blue" size="sm">
               New Sprint
-            </button>
+            </Button>
             <div className="from-sprintra-orange-400 to-sprintra-orange-500 h-8 w-8 rounded-full bg-gradient-to-br"></div>
           </div>
         </div>
@@ -69,38 +72,52 @@ export default function Dashboard() {
                 Quick Actions
               </h3>
               <div className="space-y-2">
-                <button className="bg-sprintra-blue-600/20 text-sprintra-blue-400 hover:bg-sprintra-blue-600/30 flex w-full items-center space-x-3 rounded-lg p-3 text-left transition-colors">
-                  <svg
-                    className="h-5 w-5"
-                    fill="none"
-                    stroke="currentColor"
-                    viewBox="0 0 24 24"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth={2}
-                      d="M13 10V3L4 14h7v7l9-11h-7z"
-                    />
-                  </svg>
-                  <span className="text-sm font-medium">Dashboard</span>
-                </button>
-                <button className="flex w-full items-center space-x-3 rounded-lg p-3 text-left text-slate-300 transition-colors hover:bg-slate-700/50">
-                  <svg
-                    className="h-5 w-5"
-                    fill="none"
-                    stroke="currentColor"
-                    viewBox="0 0 24 24"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth={2}
-                      d="M9 5H7a2 2 0 00-2 2v10a2 2 0 002 2h8a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"
-                    />
-                  </svg>
-                  <span className="text-sm font-medium">My Sprints</span>
-                </button>
+                <Button
+                  variant="nav"
+                  size="sm"
+                  fullWidth
+                  leftIcon={
+                    <svg
+                      className="h-5 w-5"
+                      fill="none"
+                      stroke="currentColor"
+                      viewBox="0 0 24 24"
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth={2}
+                        d="M13 10V3L4 14h7v7l9-11h-7z"
+                      />
+                    </svg>
+                  }
+                  className="justify-start"
+                >
+                  Dashboard
+                </Button>
+                <Button
+                  variant="ghost"
+                  size="sm"
+                  fullWidth
+                  leftIcon={
+                    <svg
+                      className="h-5 w-5"
+                      fill="none"
+                      stroke="currentColor"
+                      viewBox="0 0 24 24"
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth={2}
+                        d="M9 5H7a2 2 0 00-2 2v10a2 2 0 002 2h8a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"
+                      />
+                    </svg>
+                  }
+                  className="justify-start"
+                >
+                  My Sprints
+                </Button>
                 <button className="flex w-full items-center space-x-3 rounded-lg p-3 text-left text-slate-300 transition-colors hover:bg-slate-700/50">
                   <svg
                     className="h-5 w-5"
@@ -189,9 +206,9 @@ export default function Dashboard() {
               <p className="mb-3 text-xs text-slate-300">
                 Need help? Ask me anything about your sprint!
               </p>
-              <button className="bg-sprintra-orange-600 hover:bg-sprintra-orange-700 w-full rounded-lg px-3 py-2 text-xs font-medium text-white transition-colors">
+              <Button variant="primary" gradient="orange" size="xs" fullWidth>
                 Chat with AI
-              </button>
+              </Button>
             </div>
           </nav>
         </aside>
@@ -360,36 +377,18 @@ export default function Dashboard() {
                   </span>
                 </div>
                 <div className="space-y-3">
-                  <div className="rounded-lg bg-slate-700/50 p-3 transition-colors hover:bg-slate-700">
-                    <div className="mb-2 flex items-center justify-between">
-                      <span className="text-xs font-medium text-slate-400">
-                        Epic
-                      </span>
-                      <span className="text-xs text-slate-500">8hr</span>
-                    </div>
-                    <p className="text-sm text-white">
-                      User Authentication System
-                    </p>
-                    <div className="mt-2 flex items-center space-x-2">
-                      <span className="bg-sprintra-blue-600/20 text-sprintra-blue-400 rounded px-2 py-1 text-xs">
-                        Backend
-                      </span>
-                    </div>
-                  </div>
-                  <div className="rounded-lg bg-slate-700/50 p-3 transition-colors hover:bg-slate-700">
-                    <div className="mb-2 flex items-center justify-between">
-                      <span className="text-xs font-medium text-slate-400">
-                        Feature
-                      </span>
-                      <span className="text-xs text-slate-500">4hr</span>
-                    </div>
-                    <p className="text-sm text-white">Search & Filter Hotels</p>
-                    <div className="mt-2 flex items-center space-x-2">
-                      <span className="bg-sprintra-orange-600/20 text-sprintra-orange-400 rounded px-2 py-1 text-xs">
-                        Frontend
-                      </span>
-                    </div>
-                  </div>
+                  <Ticket
+                    type="Epic"
+                    title="User Authentication System"
+                    timeEstimate="8hr"
+                    tags={[{ label: "Backend", color: "blue" }]}
+                  />
+                  <Ticket
+                    type="Feature"
+                    title="Search & Filter Hotels"
+                    timeEstimate="4hr"
+                    tags={[{ label: "Frontend", color: "orange" }]}
+                  />
                 </div>
               </div>
 
@@ -405,38 +404,18 @@ export default function Dashboard() {
                   </span>
                 </div>
                 <div className="space-y-3">
-                  <div className="border-sprintra-orange-500/30 from-sprintra-orange-500/10 rounded-lg border bg-gradient-to-r to-transparent p-3">
-                    <div className="mb-2 flex items-center justify-between">
-                      <span className="text-sprintra-orange-400 text-xs font-medium">
-                        🔥 Critical
-                      </span>
-                      <span className="text-xs text-slate-400">2hr</span>
-                    </div>
-                    <p className="text-sm text-white">
-                      Set up Next.js + Tailwind
-                    </p>
-                    <div className="mt-2 flex items-center space-x-2">
-                      <span className="rounded bg-green-600/20 px-2 py-1 text-xs text-green-400">
-                        Setup
-                      </span>
-                    </div>
-                  </div>
-                  <div className="rounded-lg bg-slate-700/50 p-3 transition-colors hover:bg-slate-700">
-                    <div className="mb-2 flex items-center justify-between">
-                      <span className="text-xs font-medium text-slate-400">
-                        Task
-                      </span>
-                      <span className="text-xs text-slate-500">1hr</span>
-                    </div>
-                    <p className="text-sm text-white">
-                      Design homepage wireframe
-                    </p>
-                    <div className="mt-2 flex items-center space-x-2">
-                      <span className="rounded bg-purple-600/20 px-2 py-1 text-xs text-purple-400">
-                        Design
-                      </span>
-                    </div>
-                  </div>
+                  <Ticket
+                    title="Set up Next.js + Tailwind"
+                    timeEstimate="2hr"
+                    priority="critical"
+                    tags={[{ label: "Setup", color: "green" }]}
+                  />
+                  <Ticket
+                    type="Task"
+                    title="Design homepage wireframe"
+                    timeEstimate="1hr"
+                    tags={[{ label: "Design", color: "purple" }]}
+                  />
                 </div>
               </div>
 
@@ -452,31 +431,13 @@ export default function Dashboard() {
                   </span>
                 </div>
                 <div className="space-y-3">
-                  <div className="border-sprintra-blue-500/50 bg-sprintra-blue-900/20 rounded-lg border p-3">
-                    <div className="from-sprintra-blue-500/10 absolute inset-0 animate-pulse rounded-lg bg-gradient-to-r to-transparent"></div>
-                    <div className="relative">
-                      <div className="mb-2 flex items-center justify-between">
-                        <span className="text-sprintra-blue-400 text-xs font-medium">
-                          ⚡ Active
-                        </span>
-                        <span className="text-xs text-slate-400">
-                          45min left
-                        </span>
-                      </div>
-                      <p className="text-sm text-white">
-                        Integrate RapidAPI for flights
-                      </p>
-                      <div className="mt-2 flex items-center space-x-2">
-                        <span className="bg-sprintra-blue-600/20 text-sprintra-blue-400 rounded px-2 py-1 text-xs">
-                          API
-                        </span>
-                        <div className="h-1 flex-1 rounded-full bg-slate-700">
-                          <div className="bg-sprintra-blue-500 h-1 w-3/4 rounded-full"></div>
-                        </div>
-                        <span className="text-xs text-slate-400">75%</span>
-                      </div>
-                    </div>
-                  </div>
+                  <Ticket
+                    title="Integrate RapidAPI for flights"
+                    timeEstimate="45min"
+                    isActive={true}
+                    progress={75}
+                    tags={[{ label: "API", color: "blue" }]}
+                  />
                 </div>
               </div>
 
@@ -492,38 +453,18 @@ export default function Dashboard() {
                   </span>
                 </div>
                 <div className="space-y-3">
-                  <div className="rounded-lg bg-green-900/20 p-3">
-                    <div className="mb-2 flex items-center justify-between">
-                      <span className="text-xs font-medium text-green-400">
-                        ✅ Complete
-                      </span>
-                      <span className="text-xs text-slate-400">30min</span>
-                    </div>
-                    <p className="text-sm text-white line-through opacity-75">
-                      Project initialization
-                    </p>
-                    <div className="mt-2 flex items-center space-x-2">
-                      <span className="rounded bg-green-600/20 px-2 py-1 text-xs text-green-400">
-                        Setup
-                      </span>
-                    </div>
-                  </div>
-                  <div className="rounded-lg bg-green-900/20 p-3">
-                    <div className="mb-2 flex items-center justify-between">
-                      <span className="text-xs font-medium text-green-400">
-                        ✅ Complete
-                      </span>
-                      <span className="text-xs text-slate-400">1hr</span>
-                    </div>
-                    <p className="text-sm text-white line-through opacity-75">
-                      Database schema design
-                    </p>
-                    <div className="mt-2 flex items-center space-x-2">
-                      <span className="bg-sprintra-blue-600/20 text-sprintra-blue-400 rounded px-2 py-1 text-xs">
-                        Backend
-                      </span>
-                    </div>
-                  </div>
+                  <Ticket
+                    title="Project initialization"
+                    timeEstimate="30min"
+                    isCompleted={true}
+                    tags={[{ label: "Setup", color: "green" }]}
+                  />
+                  <Ticket
+                    title="Database schema design"
+                    timeEstimate="1hr"
+                    isCompleted={true}
+                    tags={[{ label: "Backend", color: "blue" }]}
+                  />
                 </div>
               </div>
             </div>

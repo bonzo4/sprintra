@@ -1,36 +1,74 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# _Sprintra: AI Project Conductor_
 
-## Getting Started
+_"From idea to demo—without the planning chaos. AI-powered sprint planning for hackathons and indie builders."_
 
-First, run the development server:
+### **Elevator Pitch:**
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+*Sprintra is*s an **AI co-pilot for hackathon warriors and indie developers** who want to build fast and hit deadlines. Describe your project in one sentence, and it instantly generates:
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+- A **time-boxed plan** (hourly for hackathons, weekly for MVPs).
+- **Developer-ready tasks** with embedded docs/code snippets.
+- **Real-time adjustments** when you fall behind—so you can pivot before demo day.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+No more wasting hours on scoping or guessing tech stacks. Just **focus on coding** while AI handles the planning panic.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+### **MVP Core Features (Hackathon/Indie MVP Focus)**
 
-## Learn More
+### **1. Lightning-Fast Project Setup**
 
-To learn more about Next.js, take a look at the following resources:
+- **Input**: User describes their goal in 1 sentence (e.g., "Build a travel app MVP in 48 hours").
+- **Output**:
+  - **Instant timeline** (e.g., "Day 1: Auth + API setup | Day 2: UI + Demo").
+  - **Tech stack shortcuts** (e.g., "Use Firebase for auth, RapidAPI for flights").
+  - **Pre-built templates** (e.g., "Hackathon: Travel App" or "Indie MVP: SaaS Starter").
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+### **2. Bite-Sized, Time-Boxed Tasks**
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+- **Auto-generated tasks** broken into **2-hour blocks** (hackathons) or **daily sprints** (indie MVPs).
+  - _Example_:
+    - "2hr: Set up Next.js + Tailwind" (with boilerplate repo link).
+    - "1hr: Get OpenAI API key for itinerary generator."
+- **Priority flags**: Critical path tasks highlighted (e.g., "Do this first: API auth").
 
-## Deploy on Vercel
+### **3. Embedded Cheat Codes**
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+- **One-click resources** inside tasks:
+  - API docs (e.g., "Skyscanner API quickstart").
+  - Code snippets (e.g., "Copy this Flask endpoint for hotels").
+  - Design assets (e.g., "Free Figma travel app template").
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+### **4. Deadline-Driven Adjustments**
+
+- **Realtime timeline updates**:
+  - _Example_: "You’re 4hrs behind—simplify the hotel search feature or cut restaurants."
+- **Pivot suggestions**: If stuck, AI recommends alternatives (e.g., "Use mock data instead of live API").
+
+### **5. Demo-Day Prep**
+
+- **Last-hour checklist**:
+  - "Polish landing page" + "Prep 30-second pitch."
+  - Exportable README (auto-filled with tech stack + features).
+
+### **Example User Flow (Hackathon)**
+
+1. **User inputs**: "Build a TikTok for cats in 24hrs."
+2. **AI generates**:
+   - **Timeline**:
+     - 0-4hrs\*: Set up React Native + Firebase.
+     - 4-8hrs\*: Implement video upload + playback.
+   - **Tasks**:
+     - "Install React Native Video (docs link)."
+     - "Test on iOS simulator (tutorial link)."
+3. **At 8hrs**: User marks "video playback" incomplete → AI suggests:
+   - "Switch to web-based demo using **`<video>`** tag to save time."
+
+### **Technical Approach (Keep It Simple)**
+
+- **Backend**:
+  - OpenAI API for task generation (fine-tuned on hackathon/indie MVP examples).
+  - Firebase for user projects/tasks.
+- **Frontend**:
+  - Next.js + drag-and-drop Kanban (e.g., [React Beautiful DnD](https://github.com/atlassian/react-beautiful-dnd)).
+- **Integrations**:
+  - GitHub API (auto-create repos).
+  - RapidAPI (suggest APIs).
