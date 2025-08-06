@@ -1,5 +1,5 @@
 import ClockIcon from "@/components/icons/ClockIcon";
-import Ticket from "@/components/Ticket";
+import TicketCard from "@/components/TicketCard";
 
 export default function Feature2() {
   return (
@@ -15,20 +15,25 @@ export default function Feature2() {
         again.
       </p>
       <div className="space-y-3">
-        <Ticket
-          title="Set up authentication flow"
-          timeEstimate="2hr"
-          priority="high"
-          className="cursor-pointer border border-slate-600 hover:border-orange-500/50"
-          tags={[{ label: "Critical Path", color: "red" }]}
-          isActive={true}
+        <TicketCard
+          ticket={{
+            id: "1",
+            type: "Task",
+            title: "Set up authentication flow",
+            timeEstimate: "2hr",
+            priority: "high",
+            tags: [{ label: "Critical Path", color: "red" }],
+          }}
         />
-        <Ticket
-          title="Build API integration"
-          timeEstimate="1hr"
-          priority="medium"
-          className="cursor-pointer border border-slate-600 hover:border-orange-500/50"
-          tags={[{ label: "Sprint", color: "orange" }]}
+        <TicketCard
+          ticket={{
+            id: "2",
+            type: "Task",
+            title: "Build API integration",
+            timeEstimate: "1hr",
+            priority: "medium",
+            tags: [{ label: "API", color: "blue" }],
+          }}
         />
       </div>
     </div>

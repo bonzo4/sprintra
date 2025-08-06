@@ -1,15 +1,7 @@
-import { Tag } from "@/lib/types";
+import { Ticket } from "@/lib/types";
 
 interface TicketProps {
-  type?: "Epic" | "Feature" | "Task" | "Bug" | "Story";
-  title: string;
-  timeEstimate?: string;
-  tags?: Array<Tag>;
-  priority?: "low" | "medium" | "high" | "critical";
-  progress?: number;
-  isActive?: boolean;
-  isCompleted?: boolean;
-  onClick?: () => void;
+  ticket: Ticket;
   className?: string;
 }
 
@@ -36,32 +28,22 @@ const priorityLabels = {
   low: "📝 Low",
 };
 
-export default function Ticket({
-  type = "Task",
-  title,
-  timeEstimate,
-  tags = [],
-  priority,
-  progress,
-  isActive = false,
-  isCompleted = false,
-  onClick,
-  className = "",
-}: TicketProps) {
-  const baseClasses = "rounded-lg p-3 transition-colors cursor-pointer";
+export default function TicketCard({ ticket, className = "" }: TicketProps) {
+  const baseClasses =
+    "rounded-lg p-3 transition-colors cursor-pointer relative";
 
   let containerClasses = baseClasses;
 
-  if (isCompleted) {
+  if (ticket.isCompleted) {
     containerClasses += " bg-green-900/20";
-  } else if (isActive && priority === "critical") {
+  } else if (ticket.isActive && ticket.priority === "critical") {
     containerClasses +=
       " border border-sprintra-orange-500/30 bg-gradient-to-r from-sprintra-orange-500/10 to-transparent";
-  } else if (isActive) {
+  } else if (ticket.isActive) {
     containerClasses +=
       " border border-sprintra-blue-500/50 bg-sprintra-blue-900/20";
-  } else if (priority && priority !== "low") {
-    containerClasses += ` border bg-gradient-to-r to-transparent ${priorityStyles[priority]}`;
+  } else if (ticket.priority && ticket.priority !== "low") {
+    containerClasses += ` border bg-gradient-to-r to-transparent ${priorityStyles[ticket.priority]}`;
   } else {
     containerClasses += " bg-slate-700/50 hover:bg-slate-700";
   }
@@ -70,27 +52,27 @@ export default function Ticket({
     containerClasses += ` ${className}`;
   }
 
-  const typeColor = isCompleted
+  const typeColor = ticket.isCompleted
     ? "text-green-400"
-    : isActive
-      ? priority === "critical"
+    : ticket.isActive
+      ? ticket.priority === "critical"
         ? "text-sprintra-orange-400"
         : "text-sprintra-blue-400"
       : "text-slate-400";
 
-  const typeLabel = isCompleted
+  const typeLabel = ticket.isCompleted
     ? "✅ Complete"
-    : isActive
-      ? priority === "critical"
+    : ticket.isActive
+      ? ticket.priority === "critical"
         ? priorityLabels.critical
         : "⚡ Active"
-      : priority
-        ? priorityLabels[priority]
-        : type;
+      : ticket.priority
+        ? priorityLabels[ticket.priority]
+        : ticket.type;
 
   return (
-    <div className={containerClasses} onClick={onClick}>
-      {isActive && (
+    <div className={containerClasses}>
+      {ticket.isActive && (
         <div className="from-sprintra-blue-500/10 absolute inset-0 animate-pulse rounded-lg bg-gradient-to-r to-transparent"></div>
       )}
       <div className="relative text-left">
@@ -98,23 +80,23 @@ export default function Ticket({
           <span className={`text-xs font-medium ${typeColor}`}>
             {typeLabel}
           </span>
-          {timeEstimate && (
+          {ticket.timeEstimate && (
             <span className="text-xs text-slate-400">
-              {isActive && progress !== undefined
-                ? `${timeEstimate} left`
-                : timeEstimate}
+              {ticket.isActive && ticket.progress !== undefined
+                ? `${ticket.timeEstimate} left`
+                : ticket.timeEstimate}
             </span>
           )}
         </div>
 
         <p
-          className={`text-sm text-white ${isCompleted ? "line-through opacity-75" : ""}`}
+          className={`text-sm text-white ${ticket.isCompleted ? "line-through opacity-75" : ""}`}
         >
-          {title}
+          {ticket.title}
         </p>
 
         <div className="mt-2 flex items-center space-x-2">
-          {tags.map((tag, index) => (
+          {ticket.tags.map((tag, index) => (
             <span
               key={index}
               className={`rounded px-2 py-1 text-xs ${tagColorClasses[tag.color]}`}
@@ -123,15 +105,15 @@ export default function Ticket({
             </span>
           ))}
 
-          {isActive && progress !== undefined && (
+          {ticket.isActive && ticket.progress !== undefined && (
             <>
               <div className="h-1 flex-1 rounded-full bg-slate-700">
                 <div
                   className="bg-sprintra-blue-500 h-1 rounded-full transition-all duration-300"
-                  style={{ width: `${progress}%` }}
+                  style={{ width: `${ticket.progress}%` }}
                 ></div>
               </div>
-              <span className="text-xs text-slate-400">{progress}%</span>
+              <span className="text-xs text-slate-400">{ticket.progress}%</span>
             </>
           )}
         </div>

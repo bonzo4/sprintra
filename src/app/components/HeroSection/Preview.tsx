@@ -1,5 +1,5 @@
 import Button from "@/components/ui/Button";
-import Ticket from "@/components/Ticket";
+import TicketCard from "@/components/TicketCard";
 import LightningBolt from "@/components/icons/LightningBolt";
 
 export default function Preview() {
@@ -12,12 +12,16 @@ export default function Preview() {
               <div className="mr-2 h-3 w-3 rounded-full bg-slate-500"></div>
               To Do
             </h3>
-            <Ticket
-              title="Set up Next.js + Tailwind"
-              timeEstimate="2hr"
-              priority="critical"
+            <TicketCard
+              ticket={{
+                id: "1",
+                type: "Task",
+                title: "Set up Next.js + Tailwind",
+                timeEstimate: "2hr",
+                priority: "critical",
+                tags: [{ label: "Setup", color: "green" }],
+              }}
               className="cursor-pointer border border-slate-600 hover:border-blue-500/50"
-              tags={[{ label: "Setup", color: "green" }]}
             />
           </div>
           <div className="space-y-4">
@@ -25,11 +29,15 @@ export default function Preview() {
               <div className="bg-sprintra-blue-500 mr-2 h-3 w-3 animate-pulse rounded-full"></div>
               In Progress
             </h3>
-            <Ticket
-              title="Integrate OpenAI API"
-              timeEstimate="1hr left"
-              isActive={true}
-              tags={[{ label: "API", color: "blue" }]}
+            <TicketCard
+              ticket={{
+                id: "2",
+                type: "Task",
+                title: "Integrate OpenAI API",
+                timeEstimate: "1hr left",
+                isActive: true,
+                tags: [{ label: "API", color: "blue" }],
+              }}
               className="relative overflow-hidden"
             />
           </div>
@@ -38,12 +46,16 @@ export default function Preview() {
               <div className="mr-2 h-3 w-3 rounded-full bg-green-500"></div>
               Done
             </h3>
-            <Ticket
-              title="Setup Firebase"
-              timeEstimate="30min"
-              isCompleted={true}
+            <TicketCard
+              ticket={{
+                id: "3",
+                type: "Task",
+                title: "Setup Firebase",
+                timeEstimate: "30min",
+                isCompleted: true,
+                tags: [{ label: "Setup", color: "green" }],
+              }}
               className="border border-green-500/30"
-              tags={[{ label: "Setup", color: "green" }]}
             />
           </div>
         </div>
