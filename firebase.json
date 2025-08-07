@@ -5,32 +5,21 @@
     "rules": "firestore.rules",
     "indexes": "firestore.indexes.json"
   },
+  "database": {
+    "rules": "database.rules.json"
+  },
   "functions": [
     {
       "source": "functions",
       "codebase": "default",
-      "predeploy": [
-        "npm --prefix \"$RESOURCE_DIR\" run lint",
-        "npm --prefix \"$RESOURCE_DIR\" run build"
-      ]
-    },
-    {
-      "source": "sprintra-ai",
-      "codebase": "sprintra-ai",
       "ignore": [
-        "node_modules",
+        "venv",
         ".git",
         "firebase-debug.log",
         "firebase-debug.*.log",
         "*.local"
       ],
-      "predeploy": [
-        "npm --prefix \"$RESOURCE_DIR\" run lint",
-        "npm --prefix \"$RESOURCE_DIR\" run build"
-      ]
+      "runtime": "python313"
     }
-  ],
-  "database": {
-    "rules": "database.rules.json"
-  }
+  ]
 }
