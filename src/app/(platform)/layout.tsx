@@ -19,9 +19,7 @@ export default function DashboardLayout({
   if (pathname === "/login" || !user) {
     return (
       <AuthWrapper>
-        <div className="min-h-screen bg-slate-900">
-          {children}
-        </div>
+        <div className="min-h-screen bg-slate-900">{children}</div>
       </AuthWrapper>
     );
   }
