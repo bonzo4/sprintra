@@ -29,7 +29,6 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
       size = "md",
       gradient,
       fullWidth = false,
-      isLoading = false,
       leftIcon,
       rightIcon,
       children,
@@ -99,27 +98,10 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
     );
 
     return (
-      <button
-        className={classes}
-        ref={ref}
-        disabled={disabled || isLoading}
-        {...props}
-      >
-        {isLoading ? (
+      <button className={classes} ref={ref} disabled={disabled} {...props}>
+        {disabled ? (
           <div className="flex items-center space-x-2">
-            <svg
-              className="h-4 w-4 animate-spin"
-              fill="none"
-              stroke="currentColor"
-              viewBox="0 0 24 24"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth={2}
-                d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"
-              />
-            </svg>
+            <div className="h-4 w-4 animate-spin rounded-full border-2 border-current border-t-transparent"></div>
             <span>Loading...</span>
           </div>
         ) : (

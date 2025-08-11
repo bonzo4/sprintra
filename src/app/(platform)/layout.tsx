@@ -3,39 +3,38 @@
 import DashboardHeader from "./components/DashboardHeader";
 import DashboardSidebar from "./components/DashboardSidebar";
 import { ProjectProvider } from "@/contexts/ProjectContext";
-import AuthWrapper from "@/components/AuthWrapper";
-import { useAuth } from "@/hooks/useAuth";
+import { AuthProvider, useAuth } from "@/contexts/AuthContext";
 import { usePathname } from "next/navigation";
+
+function LayoutContent({ children }: { children: React.ReactNode }) {
+  const { user } = useAuth();
+  const pathname = usePathname();
+
+  if (pathname === "/login" || !user) {
+    return <div className="min-h-screen bg-slate-900">{children}</div>;
+  }
+
+  return (
+    <ProjectProvider>
+      <div className="min-h-screen bg-slate-900">
+        <DashboardHeader />
+        <div className="flex">
+          <DashboardSidebar />
+          {children}
+        </div>
+      </div>
+    </ProjectProvider>
+  );
+}
 
 export default function DashboardLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  const { user, loading } = useAuth();
-  const pathname = usePathname();
-
-  // Show login page without header/sidebar
-  if (pathname === "/login" || !user) {
-    return (
-      <AuthWrapper>
-        <div className="min-h-screen bg-slate-900">{children}</div>
-      </AuthWrapper>
-    );
-  }
-
-  // Show full dashboard layout for authenticated users
   return (
-    <AuthWrapper>
-      <ProjectProvider>
-        <div className="min-h-screen bg-slate-900">
-          <DashboardHeader />
-          <div className="flex">
-            <DashboardSidebar />
-            {children}
-          </div>
-        </div>
-      </ProjectProvider>
-    </AuthWrapper>
+    <AuthProvider>
+      <LayoutContent>{children}</LayoutContent>
+    </AuthProvider>
   );
 }
