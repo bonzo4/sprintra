@@ -1,17 +1,7 @@
 "use client";
 
 import { createContext, useContext, useState, ReactNode } from "react";
-
-export interface Project {
-  id: string;
-  name: string;
-  color: "orange" | "blue" | "green" | "purple";
-  status: "active" | "completed" | "paused";
-  sprintCount: number;
-  completedTasks: number;
-  totalTasks: number;
-  lastActivity: string;
-}
+import { Project } from "@/lib/types";
 
 interface ProjectContextType {
   currentProject: Project | null;
@@ -27,32 +17,53 @@ const defaultProjects: Project[] = [
   {
     id: "travel-app",
     name: "Travel App MVP",
+    concept: "A travel planning app that helps users discover and plan trips",
+    deadline: "2025-09-15",
+    projectType: "mvp",
     color: "orange",
     status: "active",
     sprintCount: 2,
     completedTasks: 47,
     totalTasks: 65,
+    progress: 72,
     lastActivity: "2 hours ago",
+    createdAt: "2025-07-15T00:00:00Z",
+    updatedAt: "2025-08-11T14:30:00Z",
+    tasks: [],
   },
   {
     id: "saas-starter",
     name: "SaaS Starter Kit",
+    concept: "A comprehensive starter kit for building SaaS applications",
+    deadline: "2025-08-30",
+    projectType: "prototype",
     color: "blue",
     status: "paused",
     sprintCount: 1,
     completedTasks: 23,
     totalTasks: 40,
+    progress: 58,
     lastActivity: "1 week ago",
+    createdAt: "2025-07-01T00:00:00Z",
+    updatedAt: "2025-08-04T10:15:00Z",
+    tasks: [],
   },
   {
     id: "crypto-tracker",
     name: "Crypto Tracker",
+    concept: "Real-time cryptocurrency portfolio tracking application",
+    deadline: "2025-07-31",
+    projectType: "hackathon",
     color: "green",
     status: "completed",
     sprintCount: 3,
     completedTasks: 89,
     totalTasks: 89,
+    progress: 100,
     lastActivity: "3 days ago",
+    createdAt: "2025-07-28T00:00:00Z",
+    updatedAt: "2025-07-31T23:59:00Z",
+    tasks: [],
   },
 ];
 
