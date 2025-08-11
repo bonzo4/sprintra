@@ -1,6 +1,6 @@
 import Checkmark from "@/components/icons/Checkmark";
 import LightningBolt from "@/components/icons/LightningBolt";
-import { Project } from "@/contexts/ProjectContext";
+import { Project } from "@/lib/types";
 
 interface TimelineProps {
   project: Project | null;

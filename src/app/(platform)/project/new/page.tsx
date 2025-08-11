@@ -4,7 +4,9 @@ import { useState } from "react";
 import { useRouter } from "next/navigation";
 import Button from "@/components/ui/Button";
 import Input from "@/components/ui/Input";
-import { ProjectType, NewProjectFormData } from "@/lib/types";
+import { NewProjectFormData } from "@/lib/types";
+import { useProjectActions } from "@/hooks/useProjectActions";
+import { useProject } from "@/contexts/ProjectContext";
 
 const PROJECT_TYPE_OPTIONS = [
   {
@@ -35,6 +37,9 @@ const PROJECT_TYPE_OPTIONS = [
 
 export default function NewProjectPage() {
   const router = useRouter();
+  const { createNewProject } = useProjectActions();
+  const { setCurrentProject } = useProject();
+
   const [formData, setFormData] = useState<NewProjectFormData>({
     name: "",
     concept: "",
@@ -93,16 +98,25 @@ export default function NewProjectPage() {
     setIsLoading(true);
 
     try {
-      // TODO: Implement project creation logic
-      // This would typically involve:
-      // 1. Creating the project in your database
-      // 2. Generating AI-powered tasks and timeline
-      // 3. Setting up the project structure
+      // Create the project using the hook
+      const newProject = createNewProject(formData.name);
 
-      console.log("Creating project with data:", formData);
+      // Update the project with additional form data
+      // Note: In a real app, you'd probably want to extend createNewProject
+      // to accept all the form data, or create a separate updateProject call
+      console.log("Created project:", newProject);
+      console.log("Form data:", formData);
 
-      // Simulate API call
-      await new Promise((resolve) => setTimeout(resolve, 2000));
+      // Set as current project
+      setCurrentProject(newProject);
+
+      // TODO: In a real implementation, you would:
+      // 1. Save the additional form fields (concept, deadline, etc.) to the database
+      // 2. Call AI service to generate tasks and timeline based on the concept
+      // 3. Create initial project structure
+
+      // Simulate AI processing time
+      await new Promise((resolve) => setTimeout(resolve, 1500));
 
       // Redirect to the new project dashboard
       router.push("/dashboard");

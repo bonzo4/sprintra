@@ -1,4 +1,3 @@
-import Arrow from "@/components/icons/Arrow";
 import { useAuth } from "@/contexts/AuthContext";
 import { RefObject } from "react";
 import DropdownMenu from "./DrowdownMenu";

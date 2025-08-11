@@ -1,4 +1,4 @@
-import { Project } from "@/contexts/ProjectContext";
+import { Project } from "@/lib/types";
 
 interface ProjectCardProps {
   currentProject: Project | null;

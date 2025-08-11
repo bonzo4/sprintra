@@ -2,7 +2,7 @@ import Checkmark from "@/components/icons/Checkmark";
 import GearIcon from "@/components/icons/GearIcon";
 import LightningBolt from "@/components/icons/LightningBolt";
 import Button from "@/components/ui/Button";
-import { Project } from "@/contexts/ProjectContext";
+import { Project } from "@/lib/types";
 
 type BoardHeaderProps = {
   currentProject: Project | null;
