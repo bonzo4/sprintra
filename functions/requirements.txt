@@ -1,0 +1,3 @@
+firebase_functions
+google-genai
+python-dotenv
