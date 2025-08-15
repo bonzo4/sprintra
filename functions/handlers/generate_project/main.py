@@ -28,7 +28,7 @@ def generate_project(req: https_fn.Request) -> https_fn.Response:
         if error:
             return create_error_response(error, 400)
         
-        required_fields = ["project_name", "project_description", "timeline_hours", "tech_stack", "project_type"]
+        required_fields = ["project_name", "project_description", "project_type"]
         is_valid, validation_error = validate_required_fields(data, required_fields)
         if not is_valid:
             return create_error_response(validation_error, 400)
