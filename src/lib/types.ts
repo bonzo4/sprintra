@@ -2,12 +2,20 @@ export type Ticket = {
   id: string;
   type: "Task" | "Epic" | "Feature" | "Bug" | "Story";
   title: string;
-  timeEstimate?: string;
+  description?: string;
+  timeEstimate?: string | number;
   tags: Array<Tag>;
   priority?: "low" | "medium" | "high" | "critical";
   progress?: number;
   isActive?: boolean;
   isCompleted?: boolean;
+  resources?: Resource[];
+  dependencies?: string[];
+};
+
+export type Resource = {
+  type: "doc" | "code" | "template" | "api";
+  content: string;
 };
 
 export type Tag = {
@@ -49,4 +57,20 @@ export type NewProjectFormData = {
   deadline: string;
   projectType: ProjectType;
   techStackPreference: string;
+};
+
+export type AIGeneratedProject = {
+  project_name: string;
+  tasks: AIGeneratedTask[];
+  critical_path: string[];
+  total_estimated_time: number;
+};
+
+export type AIGeneratedTask = {
+  title: string;
+  description: string;
+  estimated_time: number;
+  priority: "low" | "medium" | "high" | "critical";
+  resources: Resource[];
+  dependencies: string[];
 };

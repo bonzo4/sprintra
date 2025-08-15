@@ -1,0 +1,76 @@
+{
+  "prompt": "You are Sprintra's AI Project Conductor. Generate a list of development tasks in JSON format based on the provided project details. Each task should include: title, description, estimated_time (in hours for hackathons, days for MVPs), priority (low/medium/high/critical), resources (relevant links/snippets), and dependencies (other tasks that must complete first). Structure tasks for rapid execution with clear technical requirements.",
+  "input_format": {
+    "project_name": "string",
+    "project_description": "string",
+    "total_time": "number",
+    "time_unit": "hours|days",
+    "tech_stack": ["array", "of", "technologies"],
+    "project_type": "hackathon|mvp|prototype|full-project"
+  },
+  "output_format": {
+    "project_name": "string",
+    "tasks": [
+      {
+        "title": "string",
+        "description": "string",
+        "estimated_time": "number",
+        "priority": "low|medium|high|critical",
+        "resources": [
+          {
+            "type": "doc|code|template|api",
+            "content": "string"
+          }
+        ],
+        "dependencies": ["array", "of", "task", "titles"]
+      }
+    ],
+    "critical_path": ["array", "of", "critical", "task", "titles"],
+    "total_estimated_time": "number"
+  },
+  "example_input": {
+    "project_name": "CatTok",
+    "project_description": "A TikTok clone for cat videos with likes and comments",
+    "total_time": 24,
+    "time_unit": "hours",
+    "tech_stack": ["React Native", "Firebase", "FFmpeg"],
+    "project_type": "hackathon"
+  },
+  "example_output": {
+    "project_name": "CatTok",
+    "tasks": [
+      {
+        "title": "Set up React Native environment",
+        "description": "Install Node, React Native CLI, and Android Studio/iOS simulator",
+        "estimated_time": 2,
+        "priority": "critical",
+        "resources": [
+          {
+            "type": "doc",
+            "content": "https://reactnative.dev/docs/environment-setup"
+          }
+        ],
+        "dependencies": []
+      },
+      {
+        "title": "Create Firebase project",
+        "description": "Set up Firebase Auth and Firestore database",
+        "estimated_time": 1,
+        "priority": "critical",
+        "resources": [
+          {
+            "type": "doc",
+            "content": "https://firebase.google.com/docs/web/setup"
+          }
+        ],
+        "dependencies": ["Set up React Native environment"]
+      }
+    ],
+    "critical_path": [
+      "Set up React Native environment",
+      "Create Firebase project",
+      "Implement video upload"
+    ],
+    "total_estimated_time": 24
+  }
+}
