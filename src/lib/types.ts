@@ -54,7 +54,7 @@ export type Project = {
 export type NewProjectFormData = {
   name: string;
   concept: string;
-  deadline: string;
+  deadline?: string;
   projectType: ProjectType;
   techStackPreference: string;
 };
