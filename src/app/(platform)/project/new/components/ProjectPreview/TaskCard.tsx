@@ -1,5 +1,5 @@
 import ClockIcon from "@/components/icons/ClockIcon";
-import { AIGeneratedTask } from "@/lib/types/Project";
+import { AIGeneratedTask } from "@/lib/types/Task";
 
 export default function TaskCard({
   task,

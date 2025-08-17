@@ -1,7 +1,5 @@
 import Button from "@/components/ui/Button";
-import { AIGeneratedProject, AIGeneratedTask } from "@/lib/types/Project";
-import ClockIcon from "@/components/icons/ClockIcon";
-import TaskCard from "./TaskCard";
+import { AIGeneratedProject } from "@/lib/types/Project";
 import TasksGrid from "./Tasks";
 import ProjectSummary from "./ProjectSummary";
 import { useState } from "react";
