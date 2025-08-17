@@ -1,5 +1,5 @@
 import Button from "@/components/ui/Button";
-import TicketCard from "@/components/TicketCard";
+import TaskCard from "@/components/TaskCard";
 import LightningBolt from "@/components/icons/LightningBolt";
 
 export default function Preview() {
@@ -12,8 +12,8 @@ export default function Preview() {
               <div className="mr-2 h-3 w-3 rounded-full bg-slate-500"></div>
               To Do
             </h3>
-            <TicketCard
-              ticket={{
+            <TaskCard
+              task={{
                 id: "1",
                 type: "Task",
                 title: "Set up Next.js + Tailwind",
@@ -29,8 +29,8 @@ export default function Preview() {
               <div className="bg-sprintra-blue-500 mr-2 h-3 w-3 animate-pulse rounded-full"></div>
               In Progress
             </h3>
-            <TicketCard
-              ticket={{
+            <TaskCard
+              task={{
                 id: "2",
                 type: "Task",
                 title: "Integrate OpenAI API",
@@ -46,8 +46,8 @@ export default function Preview() {
               <div className="mr-2 h-3 w-3 rounded-full bg-green-500"></div>
               Done
             </h3>
-            <TicketCard
-              ticket={{
+            <TaskCard
+              task={{
                 id: "3",
                 type: "Task",
                 title: "Setup Firebase",

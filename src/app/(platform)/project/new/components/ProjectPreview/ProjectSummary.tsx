@@ -1,5 +1,5 @@
 import ClockIcon from "@/components/icons/ClockIcon";
-import { AIGeneratedProject } from "@/lib/types";
+import { AIGeneratedProject } from "@/lib/types/Project";
 
 interface ProjectSummary {
   projectData: AIGeneratedProject;

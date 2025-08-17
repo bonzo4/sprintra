@@ -1,7 +1,7 @@
 "use client";
 
 import { createContext, useContext, useState, ReactNode } from "react";
-import { Project } from "@/lib/types";
+import { Project } from "@/lib/types/Project";
 
 interface ProjectContextType {
   currentProject: Project | null;

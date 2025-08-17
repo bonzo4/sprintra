@@ -1,5 +1,5 @@
 import Button from "@/components/ui/Button";
-import { AIGeneratedProject, AIGeneratedTask } from "@/lib/types";
+import { AIGeneratedProject, AIGeneratedTask } from "@/lib/types/Project";
 import ClockIcon from "@/components/icons/ClockIcon";
 import TaskCard from "./TaskCard";
 import TasksGrid from "./Tasks";

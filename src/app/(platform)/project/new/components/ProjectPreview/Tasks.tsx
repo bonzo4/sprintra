@@ -1,4 +1,4 @@
-import { AIGeneratedTask } from "@/lib/types";
+import { AIGeneratedTask } from "@/lib/types/Project";
 import TaskCard from "./TaskCard";
 
 interface TasksGridProps {

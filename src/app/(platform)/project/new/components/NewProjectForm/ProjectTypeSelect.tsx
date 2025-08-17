@@ -1,4 +1,4 @@
-import { NewProjectFormData } from "@/lib/types";
+import { NewProjectFormData } from "@/lib/types/Project";
 import { PROJECT_TYPE_OPTIONS } from "./newProjectOptions";
 
 interface ProjectTypeOption {

@@ -1,4 +1,4 @@
-import { Project } from "@/lib/types";
+import { Project } from "@/lib/types/Project";
 import BoardHeader from "./BoardHeader";
 import KanbanBoard from "./KanbanBoard";
 

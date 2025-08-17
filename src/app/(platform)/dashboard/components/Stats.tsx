@@ -2,7 +2,7 @@ import Checkmark from "@/components/icons/Checkmark";
 import ClockIcon from "@/components/icons/ClockIcon";
 import LightBulb from "@/components/icons/LightBulb";
 import LightningBolt from "@/components/icons/LightningBolt";
-import { Project } from "@/lib/types";
+import { Project } from "@/lib/types/Project";
 
 interface StatsProps {
   currentProject: Project | null;

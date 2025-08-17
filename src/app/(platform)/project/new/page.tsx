@@ -4,7 +4,7 @@ import { useState } from "react";
 import NewProjectForm from "./components/NewProjectForm";
 import NewProjectHeader from "./components/NewProjectHeader";
 import NewProjectInfo from "./components/NewProjectInfo";
-import { AIGeneratedProject } from "@/lib/types";
+import { AIGeneratedProject } from "@/lib/types/Project";
 import ProjectPreview from "./components/ProjectPreview";
 import ProjectLoading from "./components/ProjectLoading";
 

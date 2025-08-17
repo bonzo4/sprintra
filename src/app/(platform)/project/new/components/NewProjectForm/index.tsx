@@ -2,7 +2,7 @@
 
 import Button from "@/components/ui/Button";
 import Input from "@/components/ui/Input";
-import { NewProjectFormData, AIGeneratedProject } from "@/lib/types";
+import { NewProjectFormData, AIGeneratedProject } from "@/lib/types/Project";
 import { useState } from "react";
 import ProjectTypeSelector from "./ProjectTypeSelect";
 import { generateProject } from "../../actions/generateProject";

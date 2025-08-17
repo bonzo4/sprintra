@@ -1,5 +1,5 @@
 import { useProject } from "@/contexts/ProjectContext";
-import { Project, ProjectStatus } from "@/lib/types";
+import { Project, ProjectStatus } from "@/lib/types/Project";
 
 export function useProjectActions() {
   const { addProject, updateProject, projects } = useProject();
@@ -9,7 +9,7 @@ export function useProjectActions() {
     color: "orange" | "blue" | "green" | "purple" = "blue",
   ): Project => {
     const now = new Date().toISOString();
-    
+
     const newProject: Project = {
       id: name.toLowerCase().replace(/\s+/g, "-"),
       name,
@@ -38,8 +38,10 @@ export function useProjectActions() {
     const project = projects.find((p) => p.id === projectId);
     if (project && project.completedTasks < project.totalTasks) {
       const newCompletedTasks = project.completedTasks + 1;
-      const newProgress = Math.round((newCompletedTasks / project.totalTasks) * 100);
-      
+      const newProgress = Math.round(
+        (newCompletedTasks / project.totalTasks) * 100,
+      );
+
       updateProject(projectId, {
         completedTasks: newCompletedTasks,
         progress: newProgress,
@@ -53,10 +55,11 @@ export function useProjectActions() {
     const project = projects.find((p) => p.id === projectId);
     if (project) {
       const newTotalTasks = project.totalTasks + taskCount;
-      const newProgress = project.totalTasks > 0 
-        ? Math.round((project.completedTasks / newTotalTasks) * 100)
-        : 0;
-      
+      const newProgress =
+        project.totalTasks > 0
+          ? Math.round((project.completedTasks / newTotalTasks) * 100)
+          : 0;
+
       updateProject(projectId, {
         totalTasks: newTotalTasks,
         progress: newProgress,
@@ -66,10 +69,7 @@ export function useProjectActions() {
     }
   };
 
-  const updateProjectStatus = (
-    projectId: string,
-    status: ProjectStatus,
-  ) => {
+  const updateProjectStatus = (projectId: string, status: ProjectStatus) => {
     updateProject(projectId, {
       status,
       lastActivity: "Just now",

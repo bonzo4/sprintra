@@ -1,7 +1,7 @@
 "use server";
 
 import { appConfig } from "@/lib/config";
-import { AIGeneratedProject, NewProjectFormData } from "@/lib/types";
+import { AIGeneratedProject, NewProjectFormData } from "@/lib/types/Project";
 
 interface GenerateProjectRequest {
   project_name: string;

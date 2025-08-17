@@ -1,7 +1,7 @@
-import { Ticket } from "@/lib/types";
+import { Task } from "@/lib/types/Task";
 
-interface TicketProps {
-  ticket: Ticket;
+interface TaskProps {
+  task: Task;
   className?: string;
 }
 
@@ -28,22 +28,22 @@ const priorityLabels = {
   low: "📝 Low",
 };
 
-export default function TicketCard({ ticket, className = "" }: TicketProps) {
+export default function TaskCard({ task, className = "" }: TaskProps) {
   const baseClasses =
     "rounded-lg p-3 transition-colors cursor-pointer relative";
 
   let containerClasses = baseClasses;
 
-  if (ticket.isCompleted) {
+  if (task.isCompleted) {
     containerClasses += " bg-green-900/20";
-  } else if (ticket.isActive && ticket.priority === "critical") {
+  } else if (task.isActive && task.priority === "critical") {
     containerClasses +=
       " border border-sprintra-orange-500/30 bg-gradient-to-r from-sprintra-orange-500/10 to-transparent";
-  } else if (ticket.isActive) {
+  } else if (task.isActive) {
     containerClasses +=
       " border border-sprintra-blue-500/50 bg-sprintra-blue-900/20";
-  } else if (ticket.priority && ticket.priority !== "low") {
-    containerClasses += ` border bg-gradient-to-r to-transparent ${priorityStyles[ticket.priority]}`;
+  } else if (task.priority && task.priority !== "low") {
+    containerClasses += ` border bg-gradient-to-r to-transparent ${priorityStyles[task.priority]}`;
   } else {
     containerClasses += " bg-slate-700/50 hover:bg-slate-700";
   }
@@ -52,27 +52,27 @@ export default function TicketCard({ ticket, className = "" }: TicketProps) {
     containerClasses += ` ${className}`;
   }
 
-  const typeColor = ticket.isCompleted
+  const typeColor = task.isCompleted
     ? "text-green-400"
-    : ticket.isActive
-      ? ticket.priority === "critical"
+    : task.isActive
+      ? task.priority === "critical"
         ? "text-sprintra-orange-400"
         : "text-sprintra-blue-400"
       : "text-slate-400";
 
-  const typeLabel = ticket.isCompleted
+  const typeLabel = task.isCompleted
     ? "✅ Complete"
-    : ticket.isActive
-      ? ticket.priority === "critical"
+    : task.isActive
+      ? task.priority === "critical"
         ? priorityLabels.critical
         : "⚡ Active"
-      : ticket.priority
-        ? priorityLabels[ticket.priority]
-        : ticket.type;
+      : task.priority
+        ? priorityLabels[task.priority]
+        : task.type;
 
   return (
     <div className={containerClasses}>
-      {ticket.isActive && (
+      {task.isActive && (
         <div className="from-sprintra-blue-500/10 absolute inset-0 animate-pulse rounded-lg bg-gradient-to-r to-transparent"></div>
       )}
       <div className="relative text-left">
@@ -80,23 +80,23 @@ export default function TicketCard({ ticket, className = "" }: TicketProps) {
           <span className={`text-xs font-medium ${typeColor}`}>
             {typeLabel}
           </span>
-          {ticket.timeEstimate && (
+          {task.timeEstimate && (
             <span className="text-xs text-slate-400">
-              {ticket.isActive && ticket.progress !== undefined
-                ? `${ticket.timeEstimate} left`
-                : ticket.timeEstimate}
+              {task.isActive && task.progress !== undefined
+                ? `${task.timeEstimate} left`
+                : task.timeEstimate}
             </span>
           )}
         </div>
 
         <p
-          className={`text-sm text-white ${ticket.isCompleted ? "line-through opacity-75" : ""}`}
+          className={`text-sm text-white ${task.isCompleted ? "line-through opacity-75" : ""}`}
         >
-          {ticket.title}
+          {task.title}
         </p>
 
         <div className="mt-2 flex items-center space-x-2">
-          {ticket.tags.map((tag, index) => (
+          {task.tags.map((tag, index) => (
             <span
               key={index}
               className={`rounded px-2 py-1 text-xs ${tagColorClasses[tag.color]}`}
@@ -105,15 +105,15 @@ export default function TicketCard({ ticket, className = "" }: TicketProps) {
             </span>
           ))}
 
-          {ticket.isActive && ticket.progress !== undefined && (
+          {task.isActive && task.progress !== undefined && (
             <>
               <div className="h-1 flex-1 rounded-full bg-slate-700">
                 <div
                   className="bg-sprintra-blue-500 h-1 rounded-full transition-all duration-300"
-                  style={{ width: `${ticket.progress}%` }}
+                  style={{ width: `${task.progress}%` }}
                 ></div>
               </div>
-              <span className="text-xs text-slate-400">{ticket.progress}%</span>
+              <span className="text-xs text-slate-400">{task.progress}%</span>
             </>
           )}
         </div>

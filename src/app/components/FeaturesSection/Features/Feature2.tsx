@@ -1,5 +1,5 @@
 import ClockIcon from "@/components/icons/ClockIcon";
-import TicketCard from "@/components/TicketCard";
+import TaskCard from "@/components/TaskCard";
 
 export default function Feature2() {
   return (
@@ -15,8 +15,8 @@ export default function Feature2() {
         again.
       </p>
       <div className="space-y-3">
-        <TicketCard
-          ticket={{
+        <TaskCard
+          task={{
             id: "1",
             type: "Task",
             title: "Set up authentication flow",
@@ -25,8 +25,8 @@ export default function Feature2() {
             tags: [{ label: "Critical Path", color: "red" }],
           }}
         />
-        <TicketCard
-          ticket={{
+        <TaskCard
+          task={{
             id: "2",
             type: "Task",
             title: "Build API integration",
