@@ -1,15 +1,19 @@
-import Backlog from "./Backlog";
-import Todo from "./Todo";
-import InProgress from "./InProgress";
-import Done from "./Done";
+import KanbanColumn from "./KanbanColumn";
+import { kanbanColumns } from "./kanbanConfig";
 
 export default function KanbanBoard() {
   return (
     <div className="grid grid-cols-1 gap-6 lg:grid-cols-4">
-      <Backlog />
-      <Todo />
-      <InProgress />
-      <Done />
+      {kanbanColumns.map((column) => (
+        <KanbanColumn
+          key={column.id}
+          title={column.title}
+          indicatorColor={column.indicatorColor}
+          count={column.count}
+          initialTasks={column.initialTasks}
+          animate={column.animate}
+        />
+      ))}
     </div>
   );
 }
