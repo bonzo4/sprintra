@@ -3,6 +3,7 @@ from firebase_admin import initialize_app
 
 
 from handlers.generate_project.main import generate_project
+from handlers.save_new_project.main import save_new_project
 
 set_global_options(max_instances=10)
 

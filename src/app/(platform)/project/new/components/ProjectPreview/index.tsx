@@ -3,6 +3,8 @@ import { AIGeneratedProject } from "@/lib/types/Project";
 import TasksGrid from "./Tasks";
 import ProjectSummary from "./ProjectSummary";
 import { useState } from "react";
+import { saveProject } from "../../actions/saveProject";
+import { useAuth } from "@/contexts/AuthContext";
 
 interface ProjectPreviewProps {
   generatedProject: AIGeneratedProject;
@@ -14,13 +16,20 @@ export default function ProjectPreview({
   setGeneratedProject,
 }: ProjectPreviewProps) {
   const [isSaving, setIsSaving] = useState(false);
+  const { user } = useAuth();
 
   const handleSaveProject = async () => {
     if (!generatedProject) return;
 
     setIsSaving(true);
     try {
-      await new Promise((resolve) => setTimeout(resolve, 2000));
+      if (!user) {
+        return;
+      }
+      await saveProject({
+        aiGeneratedProject: generatedProject,
+        userId: user.uid,
+      });
       console.log("Project saved:", generatedProject);
     } catch (error) {
       console.error("Error saving project:", error);

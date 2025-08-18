@@ -52,14 +52,9 @@ export default function ProjectCard({
     <button
       key={project.id}
       onClick={() => setCurrentProject(project)}
-      className={getProjectColorClasses(
-        project.color,
-        currentProject?.id === project.id,
-      )}
+      className={getProjectColorClasses("", currentProject?.id === project.id)}
     >
-      <div
-        className={`h-2 w-2 rounded-full ${getProjectDotColor(project.color)}`}
-      ></div>
+      <div className={`h-2 w-2 rounded-full ${getProjectDotColor("")}`}></div>
       <div className="flex-1 text-left">
         <span className="text-sm font-medium">{project.name}</span>
         <div className="flex items-center space-x-2 text-xs opacity-75">
@@ -67,7 +62,7 @@ export default function ProjectCard({
             {project.completedTasks}/{project.totalTasks} tasks
           </span>
           <span>•</span>
-          <span
+          {/* <span
             className={` ${
               project.status === "active"
                 ? "text-green-400"
@@ -77,7 +72,7 @@ export default function ProjectCard({
             } `}
           >
             {project.status}
-          </span>
+          </span> */}
         </div>
       </div>
     </button>

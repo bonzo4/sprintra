@@ -1,14 +1,17 @@
 "use server";
 
-import { appConfig } from "@/lib/config";
-import { AIGeneratedProject, NewProjectFormData } from "@/lib/types/Project";
+import {
+  AIGeneratedProject,
+  NewProjectFormData,
+  ProjectType,
+} from "@/lib/types/Project";
 
 interface GenerateProjectRequest {
-  project_name: string;
-  project_description: string;
-  timeline_hours?: number;
-  tech_stack?: string[];
-  project_type: string;
+  name: string;
+  description: string;
+  deadline?: number;
+  techStack?: string;
+  type: ProjectType;
 }
 
 interface GenerateProjectResponse {
@@ -22,33 +25,22 @@ export async function generateProject(formData: NewProjectFormData): Promise<{
   error?: string;
 }> {
   try {
-    let timelineHours: number | undefined;
+    let deadline: number | undefined;
     if (formData.deadline) {
-      const deadline = new Date(formData.deadline);
-      const now = new Date();
-      const timeDifferenceMs = deadline.getTime() - now.getTime();
-      timelineHours = Math.max(
-        1,
-        Math.floor(timeDifferenceMs / (1000 * 60 * 60)),
-      );
+      deadline = new Date(formData.deadline).getTime();
     }
 
-    const techStack = formData.techStackPreference
-      ? formData.techStackPreference
-          .split(",")
-          .map((tech) => tech.trim())
-          .filter((tech) => tech.length > 0)
-      : undefined;
-
     const requestBody: GenerateProjectRequest = {
-      project_name: formData.name,
-      project_description: formData.concept,
-      timeline_hours: timelineHours,
-      tech_stack: techStack,
-      project_type: formData.projectType,
+      name: formData.name,
+      description: formData.description,
+      deadline,
+      techStack: formData.techStack ? formData.techStack : undefined,
+      type: formData.type,
     };
 
-    const response = await fetch(`${appConfig.apiEndpoint}/generate_project`, {
+    console.log(requestBody);
+
+    const response = await fetch(process.env.GENERATE_PROJECT_ENDPOINT!, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

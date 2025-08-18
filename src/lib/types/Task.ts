@@ -1,16 +1,14 @@
 export type Task = {
   id: string;
-  type: "Task" | "Epic" | "Feature" | "Bug" | "Story";
+  projectId: string;
   title: string;
-  description?: string;
-  timeEstimate?: string | number;
+  description: string;
+  timeEstimate: number;
   tags: Array<Tag>;
-  priority?: "low" | "medium" | "high" | "critical";
-  progress?: number;
-  isActive?: boolean;
-  isCompleted?: boolean;
-  resources?: Resource[];
-  dependencies?: string[];
+  priority: "low" | "medium" | "high" | "critical";
+  status: "Backlog" | "To Do" | "In Progress" | "Completed";
+  resources: Resource[];
+  dependencies: string[];
 };
 
 export type Resource = {
@@ -26,7 +24,7 @@ export type Tag = {
 export type AIGeneratedTask = {
   title: string;
   description: string;
-  estimated_time: number;
+  timeEstimate: number;
   priority: "low" | "medium" | "high" | "critical";
   resources: Resource[];
   dependencies: string[];

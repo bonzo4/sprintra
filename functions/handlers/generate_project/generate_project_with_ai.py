@@ -32,9 +32,6 @@ def generate_project_with_ai(prompt_data: dict, user_input: dict) -> dict:
             Example Output:
             {example_output}
 
-            Now generate a project board for this input:
-            {user_input_json}
-
             Please respond with ONLY the JSON output, no additional text or formatting.
             """
         
@@ -42,11 +39,11 @@ def generate_project_with_ai(prompt_data: dict, user_input: dict) -> dict:
             messages=[
                 {
                     "role": "system",
-                    "content": "You are Sprintra's AI Project Conductor. Generate only valid JSON responses without any additional text or formatting.",
+                    "content": full_prompt,
                 },
                 {
                     "role": "user",
-                    "content": full_prompt,
+                    "content": user_input_json,
                 }
             ],
             max_completion_tokens=16384,

@@ -1,20 +1,20 @@
 {
   "prompt": "You are Sprintra's AI Project Conductor. Generate a list of development tasks in JSON format based on the provided project details. Each task should include: title, description, estimated_time (in hours for hackathons, days for MVPs), priority (low/medium/high/critical), resources (relevant links/snippets), and dependencies (other tasks that must complete first). Structure tasks for rapid execution with clear technical requirements. If total_time is not specified, use your expertise to determine an appropriate timeline based on the project scope and type.",
   "input_format": {
-    "project_name": "string",
-    "project_description": "string",
-    "total_time": "number (optional - if not provided, AI will determine appropriate timeline)",
-    "time_unit": "hours|days (optional - defaults to hours for hackathons, days for MVPs/prototypes/full-projects)",
-    "tech_stack": ["array", "of", "technologies"],
-    "project_type": "hackathon|mvp|prototype|full-project"
+    "name": "string",
+    "description": "string",
+    "deadline": "timestamp (optional - if not provided, AI will determine appropriate deadline)",
+    "techStack": ["array", "of", "technologies"],
+    "type": "hackathon|mvp|prototype|full-project"
   },
   "output_format": {
-    "project_name": "string",
+    "name": "string",
+    "description": "A more refined description of the project",
     "tasks": [
       {
         "title": "string",
         "description": "string",
-        "estimated_time": "number",
+        "estimatedTime": "number",
         "priority": "low|medium|high|critical",
         "resources": [
           {
@@ -25,24 +25,25 @@
         "dependencies": ["array", "of", "task", "titles"]
       }
     ],
-    "critical_path": ["array", "of", "critical", "task", "titles"],
-    "total_estimated_time": "number"
+    "criticalPaths": ["array", "of", "critical", "task", "titles"],
+    "totalEstimatedTime": "number",
+    "timeUnit": "hours|days|weeks - hours for hackathons, days for MVPs/prototypes, weeks for full-projects"
   },
   "example_input": {
-    "project_name": "CatTok",
-    "project_description": "A TikTok clone for cat videos with likes and comments",
-    "total_time": 24,
-    "time_unit": "hours",
-    "tech_stack": ["React Native", "Firebase", "FFmpeg"],
-    "project_type": "hackathon"
+    "name": "CatTok",
+    "description": "A TikTok clone for cat videos with likes and comments",
+    "deadline": 1672531199000,
+    "techStack": ["React Native", "Firebase", "FFmpeg"],
+    "type": "hackathon"
   },
   "example_output": {
-    "project_name": "CatTok",
+    "name": "CatTok",
+    "description": "A TikTok clone for cat videos with likes and comments",
     "tasks": [
       {
         "title": "Set up React Native environment",
         "description": "Install Node, React Native CLI, and Android Studio/iOS simulator",
-        "estimated_time": 2,
+        "estimatedTime": 2,
         "priority": "critical",
         "resources": [
           {
@@ -55,7 +56,7 @@
       {
         "title": "Create Firebase project",
         "description": "Set up Firebase Auth and Firestore database",
-        "estimated_time": 1,
+        "estimatedTime": 1,
         "priority": "critical",
         "resources": [
           {
@@ -66,11 +67,12 @@
         "dependencies": ["Set up React Native environment"]
       }
     ],
-    "critical_path": [
+    "criticalPaths": [
       "Set up React Native environment",
       "Create Firebase project",
       "Implement video upload"
     ],
-    "total_estimated_time": 24
+    "totalEstimatedTime": 24,
+    "timeUnit": "hours"
   }
 }

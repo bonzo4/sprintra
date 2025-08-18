@@ -22,13 +22,13 @@ export default function ProjectSummary({ projectData }: ProjectSummary) {
       <div className="mb-4 flex items-start justify-between">
         <div>
           <h2 className="mb-2 text-2xl font-bold text-white">
-            {projectData.project_name}
+            {projectData.name}
           </h2>
           <div className="flex items-center space-x-4 text-sm text-slate-400">
             <div className="flex items-center space-x-1">
               <ClockIcon size={4} />
               <span>
-                Total time: {formatTime(projectData.total_estimated_time)}
+                Total time: {formatTime(projectData.totalEstimatedTime)}
               </span>
             </div>
             <span>•</span>
@@ -44,14 +44,14 @@ export default function ProjectSummary({ projectData }: ProjectSummary) {
           </div>
         </div>
       </div>
-      {projectData.critical_path.length > 0 && (
+      {projectData.criticalPaths.length > 0 && (
         <div className="rounded-lg border border-slate-700 bg-slate-900/50 p-4">
           <h3 className="mb-2 font-medium text-white">Critical Path</h3>
           <p className="mb-2 text-sm text-slate-400">
             These tasks are essential and should be prioritized:
           </p>
           <div className="flex flex-wrap gap-2">
-            {projectData.critical_path.map((taskTitle, index) => (
+            {projectData.criticalPaths.map((taskTitle, index) => (
               <span
                 key={index}
                 className="inline-flex items-center rounded-full border border-orange-500/20 bg-orange-900/20 px-3 py-1 text-xs font-medium text-orange-400"

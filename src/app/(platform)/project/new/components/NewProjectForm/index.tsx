@@ -24,10 +24,10 @@ export default function NewProjectForm({
 }: NewProjectFormProps) {
   const [formData, setFormData] = useState<NewProjectFormData>({
     name: "",
-    concept: "",
+    description: "",
     deadline: "",
-    projectType: "hackathon",
-    techStackPreference: "",
+    type: "hackathon",
+    techStack: "",
   });
 
   const [errors, setErrors] = useState<Record<string, string>>({});
@@ -47,11 +47,11 @@ export default function NewProjectForm({
       newErrors.name = "Project name is required";
     }
 
-    if (!formData.concept.trim()) {
-      newErrors.concept = "Project concept is required";
-    } else if (formData.concept.trim().length < 10) {
-      newErrors.concept =
-        "Please provide a more detailed concept (at least 10 characters)";
+    if (!formData.description.trim()) {
+      newErrors.description = "Project description is required";
+    } else if (formData.description.trim().length < 10) {
+      newErrors.description =
+        "Please provide a more detailed description (at least 10 characters)";
     }
 
     setErrors(newErrors);
@@ -147,14 +147,14 @@ export default function NewProjectForm({
               className="focus:border-sprintra-blue-500 focus:ring-sprintra-blue-500/20 w-full resize-none rounded-lg border border-slate-700 bg-slate-800 px-4 py-3 text-white placeholder-slate-400 transition-colors focus:ring-2 focus:outline-none"
               rows={4}
               placeholder="Describe your project in detail. What problem does it solve? Who is the target audience? What are the key features?"
-              value={formData.concept}
-              onChange={(e) => handleInputChange("concept", e.target.value)}
+              value={formData.description}
+              onChange={(e) => handleInputChange("description", e.target.value)}
             />
-            {errors.concept && (
-              <p className="mt-1 text-sm text-red-400">{errors.concept}</p>
+            {errors.description && (
+              <p className="mt-1 text-sm text-red-400">{errors.description}</p>
             )}
             <p className="mt-2 text-xs text-slate-500">
-              The more detailed your concept, the better AI can plan your
+              The more detailed your description, the better AI can plan your
               project
             </p>
           </div>
@@ -181,10 +181,8 @@ export default function NewProjectForm({
             <Input
               label="Tech Stack Preference (Optional)"
               placeholder="e.g., React, Next.js, Firebase, Python, etc."
-              value={formData.techStackPreference}
-              onChange={(e) =>
-                handleInputChange("techStackPreference", e.target.value)
-              }
+              value={formData.techStack}
+              onChange={(e) => handleInputChange("techStack", e.target.value)}
               fullWidth
               size="lg"
               helper="Leave blank to let AI suggest the best tech stack for your project"

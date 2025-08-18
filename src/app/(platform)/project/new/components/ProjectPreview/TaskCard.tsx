@@ -49,7 +49,7 @@ export default function TaskCard({
       <div className="flex items-center justify-between">
         <div className="flex items-center space-x-1 text-slate-500">
           <ClockIcon size={4} />
-          <span className="text-xs">{task.estimated_time}h</span>
+          <span className="text-xs">{task.timeEstimate}h</span>
         </div>
 
         {task.dependencies.length > 0 && (
