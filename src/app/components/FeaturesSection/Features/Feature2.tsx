@@ -15,12 +15,11 @@ export default function Feature2() {
         again.
       </p>
       <div className="space-y-3">
-        <TaskCard
+        {/* <TaskCard
           task={{
             id: "1",
-            type: "Task",
             title: "Set up authentication flow",
-            timeEstimate: "2hr",
+            timeEstimate: 2,
             priority: "high",
             tags: [{ label: "Critical Path", color: "red" }],
           }}
@@ -28,13 +27,12 @@ export default function Feature2() {
         <TaskCard
           task={{
             id: "2",
-            type: "Task",
             title: "Build API integration",
-            timeEstimate: "1hr",
+            timeEstimate: 1,
             priority: "medium",
             tags: [{ label: "API", color: "blue" }],
           }}
-        />
+        /> */}
       </div>
     </div>
   );

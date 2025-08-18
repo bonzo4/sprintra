@@ -9,8 +9,6 @@ def get_random_project_color():
     colors = ["orange", "blue", "green", "purple"]
     return random.choice(colors)
 
-
-
 def transform_ai_generated_to_project(ai_project: dict, user_id: str) -> dict:
     """
     Transform AIGeneratedProject to Project format

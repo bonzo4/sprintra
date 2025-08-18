@@ -11,7 +11,7 @@ interface StatsProps {
 export default function Stats({ currentProject }: StatsProps) {
   return (
     <div className="mb-8 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4">
-      <div className="rounded-xl bg-slate-800/50 p-6 backdrop-blur-sm">
+      {/* <div className="rounded-xl bg-slate-800/50 p-6 backdrop-blur-sm">
         <div className="flex items-center justify-between">
           <div>
             <p className="text-sm text-slate-400">Active Sprints</p>
@@ -27,7 +27,7 @@ export default function Stats({ currentProject }: StatsProps) {
           <span className="text-xs text-green-400">+12%</span>
           <span className="text-xs text-slate-400">from last week</span>
         </div>
-      </div>
+      </div> */}
 
       <div className="rounded-xl bg-slate-800/50 p-6 backdrop-blur-sm">
         <div className="flex items-center justify-between">

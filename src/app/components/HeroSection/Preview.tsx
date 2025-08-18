@@ -12,7 +12,7 @@ export default function Preview() {
               <div className="mr-2 h-3 w-3 rounded-full bg-slate-500"></div>
               To Do
             </h3>
-            <TaskCard
+            {/* <TaskCard
               task={{
                 id: "1",
                 type: "Task",
@@ -22,14 +22,14 @@ export default function Preview() {
                 tags: [{ label: "Setup", color: "green" }],
               }}
               className="cursor-pointer border border-slate-600 hover:border-blue-500/50"
-            />
+            /> */}
           </div>
           <div className="space-y-4">
             <h3 className="flex items-center text-lg font-semibold text-slate-300">
               <div className="bg-sprintra-blue-500 mr-2 h-3 w-3 animate-pulse rounded-full"></div>
               In Progress
             </h3>
-            <TaskCard
+            {/* <TaskCard
               task={{
                 id: "2",
                 type: "Task",
@@ -39,14 +39,14 @@ export default function Preview() {
                 tags: [{ label: "API", color: "blue" }],
               }}
               className="relative overflow-hidden"
-            />
+            /> */}
           </div>
           <div className="space-y-4">
             <h3 className="flex items-center text-lg font-semibold text-slate-300">
               <div className="mr-2 h-3 w-3 rounded-full bg-green-500"></div>
               Done
             </h3>
-            <TaskCard
+            {/* <TaskCard
               task={{
                 id: "3",
                 type: "Task",
@@ -56,7 +56,7 @@ export default function Preview() {
                 tags: [{ label: "Setup", color: "green" }],
               }}
               className="border border-green-500/30"
-            />
+            /> */}
           </div>
         </div>
         <div className="mt-8 text-center">

@@ -34,12 +34,12 @@ export default function TaskCard({ task, className = "" }: TaskProps) {
 
   let containerClasses = baseClasses;
 
-  if (task.isCompleted) {
+  if (task.status === "Completed") {
     containerClasses += " bg-green-900/20";
-  } else if (task.isActive && task.priority === "critical") {
+  } else if (task.status === "In Progress" && task.priority === "critical") {
     containerClasses +=
       " border border-sprintra-orange-500/30 bg-gradient-to-r from-sprintra-orange-500/10 to-transparent";
-  } else if (task.isActive) {
+  } else if (task.status === "In Progress") {
     containerClasses +=
       " border border-sprintra-blue-500/50 bg-sprintra-blue-900/20";
   } else if (task.priority && task.priority !== "low") {
@@ -52,27 +52,29 @@ export default function TaskCard({ task, className = "" }: TaskProps) {
     containerClasses += ` ${className}`;
   }
 
-  const typeColor = task.isCompleted
-    ? "text-green-400"
-    : task.isActive
-      ? task.priority === "critical"
-        ? "text-sprintra-orange-400"
-        : "text-sprintra-blue-400"
-      : "text-slate-400";
+  const typeColor =
+    task.status === "Completed"
+      ? "text-green-400"
+      : task.status === "In Progress"
+        ? task.priority === "critical"
+          ? "text-sprintra-orange-400"
+          : "text-sprintra-blue-400"
+        : "text-slate-400";
 
-  const typeLabel = task.isCompleted
-    ? "✅ Complete"
-    : task.isActive
-      ? task.priority === "critical"
-        ? priorityLabels.critical
-        : "⚡ Active"
-      : task.priority
-        ? priorityLabels[task.priority]
-        : task.type;
+  const typeLabel =
+    task.status === "Completed"
+      ? "✅ Complete"
+      : task.status === "In Progress"
+        ? task.priority === "critical"
+          ? priorityLabels.critical
+          : "⚡ Active"
+        : task.priority
+          ? priorityLabels[task.priority]
+          : "⚪️ Pending";
 
   return (
     <div className={containerClasses}>
-      {task.isActive && (
+      {task.status === "In Progress" && (
         <div className="from-sprintra-blue-500/10 absolute inset-0 animate-pulse rounded-lg bg-gradient-to-r to-transparent"></div>
       )}
       <div className="relative text-left">
@@ -80,17 +82,17 @@ export default function TaskCard({ task, className = "" }: TaskProps) {
           <span className={`text-xs font-medium ${typeColor}`}>
             {typeLabel}
           </span>
-          {task.timeEstimate && (
+          {/* {task.timeEstimate && (
             <span className="text-xs text-slate-400">
-              {task.isActive && task.progress !== undefined
+              {task.status === "In Progress" && task.progress !== undefined
                 ? `${task.timeEstimate} left`
                 : task.timeEstimate}
             </span>
-          )}
+          )} */}
         </div>
 
         <p
-          className={`text-sm text-white ${task.isCompleted ? "line-through opacity-75" : ""}`}
+          className={`text-sm text-white ${task.status === "Completed" ? "line-through opacity-75" : ""}`}
         >
           {task.title}
         </p>
@@ -105,7 +107,7 @@ export default function TaskCard({ task, className = "" }: TaskProps) {
             </span>
           ))}
 
-          {task.isActive && task.progress !== undefined && (
+          {/* {task.status === "In Progress" && task.progress !== undefined && (
             <>
               <div className="h-1 flex-1 rounded-full bg-slate-700">
                 <div
@@ -115,7 +117,7 @@ export default function TaskCard({ task, className = "" }: TaskProps) {
               </div>
               <span className="text-xs text-slate-400">{task.progress}%</span>
             </>
-          )}
+          )} */}
         </div>
       </div>
     </div>

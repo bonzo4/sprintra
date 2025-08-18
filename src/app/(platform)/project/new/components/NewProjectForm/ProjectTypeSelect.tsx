@@ -20,7 +20,7 @@ export default function ProjectTypeSelector({
           <div
             key={option.value}
             className={`cursor-pointer rounded-lg border-2 p-4 transition-all ${
-              formData.projectType === option.value
+              formData.type === option.value
                 ? "border-sprintra-blue-500 bg-sprintra-blue-500/10"
                 : "border-slate-600 bg-slate-700/50 hover:border-slate-500"
             }`}
