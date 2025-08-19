@@ -6,6 +6,7 @@ from utils.parse import parse_request_data
 from utils.validate import validate_required_fields
 from utils.response import create_error_response, create_success_response
 from utils.cors import handle_cors_preflight, get_cors_headers
+from utils.auth import get_user_from_request
 from handlers.save_new_project.transform import transform_ai_generated_to_project
 
 @https_fn.on_request()
@@ -25,6 +26,13 @@ def save_new_project(req: https_fn.Request) -> https_fn.Response:
         if error:
             return create_error_response(error, 400)
         
+        # Verify authentication
+        decoded_token, auth_error = get_user_from_request(data)
+        if auth_error:
+            return create_error_response(auth_error, 401)
+        
+        authenticated_user_id = decoded_token['uid']
+        
         required_fields = ["aiGeneratedProject", "userId"]
         is_valid, validation_error = validate_required_fields(data, required_fields)
         if not is_valid:
@@ -32,6 +40,10 @@ def save_new_project(req: https_fn.Request) -> https_fn.Response:
         
         ai_project = data.get('aiGeneratedProject')
         user_id = data.get('userId')
+        
+        # Verify that the authenticated user matches the provided userId
+        if authenticated_user_id != user_id:
+            return create_error_response("Unauthorized: User ID mismatch", 403)
         
         ai_required_fields = ["name", "description", "tasks", "criticalPaths", "totalEstimatedTime", "timeUnit"]
         is_valid, validation_error = validate_required_fields(ai_project, ai_required_fields)

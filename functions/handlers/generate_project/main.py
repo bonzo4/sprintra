@@ -4,6 +4,7 @@ from utils.parse import parse_request_data
 from utils.validate import validate_required_fields
 from utils.response import create_error_response, create_success_response
 from utils.cors import handle_cors_preflight, get_cors_headers
+from utils.auth import get_user_from_request
 from handlers.generate_project.load_prompt import load_prompt
 from handlers.generate_project.validate_project_options import validate_project_options
 from config import Config
@@ -23,6 +24,11 @@ def generate_project(req: https_fn.Request) -> https_fn.Response:
         data, error = parse_request_data(req)
         if error:
             return create_error_response(error, 400)
+
+        _, auth_error = get_user_from_request(data)
+        if auth_error:
+            return create_error_response(auth_error, 401)
+        
 
         required_fields = ["name", "description", "type"]
         is_valid, validation_error = validate_required_fields(data, required_fields)
